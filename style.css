@@ -44,7 +44,7 @@ button:hover {
     border-radius: 15px;
 }
 
-.container, .titulo {
+.container .titulo {
     text-align: center;
     padding: 0 16px 16px;
     border-bottom: 1px solid lightgray;
@@ -59,8 +59,9 @@ button:hover {
     display: flex;
 }
 
-.form-controle, input {
-    margin-right: 5px;
+.form-controle input,
+input {
+    margin: 10pz 5px;
 }
 
 #barra {
