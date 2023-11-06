@@ -82,3 +82,27 @@ const pesquisar = (buscar) => {
         }
     })
 }
+
+const filtrarTarefa = (filtrar) => {
+    const tarefas = document.querySelectorAll(".tarefa")
+
+    switch(filtrar) {
+        case "all":
+            tarefas.forEach((tarefa) => (tarefa.style.display = "flex"))
+            break
+
+        case "done":
+            tarefas.forEach((tarefa) => {
+                if (tarefa.classList.contains("done")) {
+                    tarefa.style.display = "flex"
+                }
+                else {
+                    tarefa.style.display = "none"
+                }})
+                break;
+
+                
+    }
+
+    (tarefa.style.display = "flex")
+}
