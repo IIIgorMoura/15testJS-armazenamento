@@ -101,8 +101,28 @@ const filtrarTarefa = (filtrar) => {
                 }})
                 break;
 
-                
+        case "todo":
+            tarefas.forEach((tarefa) => {
+                if(!tarefa.classList.contains("done")) {
+                    tarefa.style.display = "flex"
+                } else {
+                    tarefa.style.display = "none"
+                }})
+                break;
     }
-
-    (tarefa.style.display = "flex")
 }
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const inputValue = tarefaInput.value
+    if (inputValue) {
+        salvar(inputValue)
+    }
+})
+
+document.addEventListener("click", (e) => {
+    const targetElemento = e.target
+    const parentElemento = targetElemento.closest("div")
+    let tarefaTitulo
+})
