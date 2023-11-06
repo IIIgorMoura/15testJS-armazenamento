@@ -40,7 +40,7 @@ const salvar = (text, done = 0, save = 1) => {
         tarefa.classList.add("done")
     }
     if (save) {
-        saveTarefaLocalStorage({text, done:0})
+        saveTarefaLocalStorage({ text, done: 0 })
     }
 
     tarefasLista.appendChild(tarefa)
@@ -59,7 +59,7 @@ const updateTarefa = (text) => {
     tarefas.forEach((tarefa) => {
         let tarefaTitulo = tarefa.querySelector("h3")
 
-        if(tarefaTitulo.innerHTML === antigoInput){
+        if (tarefaTitulo.innerHTML === antigoInput) {
             tarefaTitulo.innerHTML = text
 
             updateTarefaLocalStorage(antigoInput, text)
@@ -77,7 +77,7 @@ const pesquisar = (buscar) => {
         tarefa.style.display = "flex"
         console.log(tarefaTitulo)
 
-        if(!tarefaTitulo.includes(buscar)) {
+        if (!tarefaTitulo.includes(buscar)) {
             tarefa.style.display = "none"
         }
     })
@@ -86,7 +86,7 @@ const pesquisar = (buscar) => {
 const filtrarTarefa = (filtrar) => {
     const tarefas = document.querySelectorAll(".tarefa")
 
-    switch(filtrar) {
+    switch (filtrar) {
         case "all":
             tarefas.forEach((tarefa) => (tarefa.style.display = "flex"))
             break
@@ -98,17 +98,19 @@ const filtrarTarefa = (filtrar) => {
                 }
                 else {
                     tarefa.style.display = "none"
-                }})
-                break;
+                }
+            })
+            break;
 
         case "todo":
             tarefas.forEach((tarefa) => {
-                if(!tarefa.classList.contains("done")) {
+                if (!tarefa.classList.contains("done")) {
                     tarefa.style.display = "flex"
                 } else {
                     tarefa.style.display = "none"
-                }})
-                break;
+                }
+            })
+            break;
     }
 }
 
@@ -125,4 +127,19 @@ document.addEventListener("click", (e) => {
     const targetElemento = e.target
     const parentElemento = targetElemento.closest("div")
     let tarefaTitulo
+
+    if (parentElemento && parentElemento.querySelector("h3")) {
+        tarefaTitulo = parentElemento.querySelector("h3").innerHTML || ""
+    }
+
+    if (targetElemento.classList.contains("feita")) {
+        parentElemento.classList.toggle("done")
+        updateTarefaLocalStorage(tarefaTitulo)
+    }
+
+    if (targetElemento.classList.contains("apagar")) {
+        parentElemento.remove()
+        apagaTarefaLocalStorage(tarefaTitulo)
+    }
 })
+
