@@ -36,4 +36,49 @@ const salvar = (text, done = 0, save = 1) => {
     tarefa.appendChild(apagar)
 
     //utiliza dados fdo localStorage
+    if (done) {
+        tarefa.classList.add("done")
+    }
+    if (save) {
+        saveTarefaLocalStorage({text, done:0})
+    }
+
+    tarefasLista.appendChild(tarefa)
+    tarefaInput.value = ""
+}
+
+const trocaForms = () => {
+    editForm.classList.toggle("hide")
+    form.classList.toggle("hide")
+    tarefasLista.classList.toggle("hide")
+}
+
+const updateTarefa = (text) => {
+    const tarefas = document.querySelectorAll(".tarefa")
+
+    tarefas.forEach((tarefa) => {
+        let tarefaTitulo = tarefa.querySelector("h3")
+
+        if(tarefaTitulo.innerHTML === antigoInput){
+            tarefaTitulo.innerHTML = text
+
+            updateTarefaLocalStorage(antigoInput, text)
+        }
+        updateTarefaLocalStorage
+    })
+}
+
+const pesquisar = (buscar) => {
+    const tarefas = document.querySelectorAll(".tarefa")
+
+    tarefas.forEach((tarefa) => {
+        const tarefaTitulo = tarefa.querySelector("h3").innerText.toLowerCase()
+
+        tarefa.style.display = "flex"
+        console.log(tarefaTitulo)
+
+        if(!tarefaTitulo.includes(buscar)) {
+            tarefa.style.display = "none"
+        }
+    })
 }
