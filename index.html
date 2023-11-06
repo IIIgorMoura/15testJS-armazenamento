@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,9 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
     <div class="container">
         <div class="titulo">
             <h1>Tarefas:</h1>
@@ -32,10 +34,15 @@
                 <div class="form-controle">
                     <input type="text" id="edit-input">
 
-                    <button type="submit" id="cancela-edit">
-                        Cancelar
+                    <button type="submit">
+                        Salvar
                     </button>
                 </div>
+                
+                <button type="submit" id="cancela-edit">
+                    Cancelar
+                </button>
+
             </form>
 
             <div id="barra">
@@ -57,10 +64,14 @@
                 </div>
             </div>
 
+            <div id="tarefas-lista">
+
+            </div>
         </div>
     </div>
 
     <!-- script JS -->
     <script src="main.js"></script>
 </body>
+
 </html>
